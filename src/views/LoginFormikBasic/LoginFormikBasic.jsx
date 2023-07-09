@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Formik } from "formik";
 import { useFormik } from "formik";
 import { LoginFormikBasicSchema } from "./LoginFormikBasicSchema";
 import LoginFormikBasicView from "./LoginFormikBasicView";
@@ -60,14 +61,14 @@ export default function LoginFormikBasic() {
         </button>
       </form>
       <pre>Aquí te muestro los valores temporales: {JSON.stringify({ values, errors }, null, 1)}</pre>
-      <p>AQUÍ PONGO LA VERSIÓN CON LOGINFORMIKBASICVIEW (ESTÁ SIN COMPLETAR)</p>
-      <LoginFormikBasicView
-      auth={values}
-      touched={touched}
-      errors={errors}
-      onChange={handleChange}
+      <p>Y AQUÍ PONGO LA VERSIÓN QUE HACE USO DE LOGINFORMIKBASICVIEW</p>
+      <Formik
+      initialValues={initialValues}
+      validationSchema={LoginFormikBasicSchema}
       onSubmit={onSubmit}
-      />
+      >
+        {(props) => <LoginFormikBasicView formik={props} />}
+        </Formik>
     </>
   );
 }
