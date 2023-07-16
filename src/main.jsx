@@ -9,4 +9,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 
-// El BrowserRouter lo he llevado a App.jsx en vez de ponerlo aquí (envolviendo toda la aplicación, lógicamente, o sea, las líneas 37-52).
+// El BrowserRouter lo he llevado a App.jsx en vez de ponerlo aquí (envolviendo toda la aplicación, lógicamente).

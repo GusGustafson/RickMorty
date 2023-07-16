@@ -6,6 +6,7 @@ export default function Characters() {
   const [characters, setCharacters] = useState(null);
   const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
+  const [message, setMessage] = useState("");
 
   function handleChange(event, value) {
     // Esta función es la que hace que se cambie de página al hacer clic en los botones correspondientes.
@@ -24,10 +25,16 @@ export default function Characters() {
         const response = await fetch(
           `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchValue}`
         );
-        const data = await response.json();
-        setCharacters(data);
+        if (!response.ok) {
+          setMessage("Personaje no encontrado");
+          setCharacters(null);
+          alert("Personaje no encontrado");
+        } else {
+          const data = await response.json();
+          setCharacters(data);
+          message(null);
+        }
       }
-
       fetchData();
     },
     [page, searchValue]
@@ -43,6 +50,7 @@ export default function Characters() {
       onChange={handleChange}
       onSearch={onSearchCharacter}
       searchValue={searchValue}
+      message={message}
     />
   );
 }

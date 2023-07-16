@@ -22,12 +22,7 @@ export default function CharacterCard({ name, image, location, id }) {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button
-                size="small"
-                variant="outlined"
-                color="secondary"
-                fullWidth
-              >
+              <Button size="small" variant="outlined" color="secondary" fullWidth>
                 <Link to={`${id}`}>Detalles (foto)</Link>
               </Button>
             </CardActions>
